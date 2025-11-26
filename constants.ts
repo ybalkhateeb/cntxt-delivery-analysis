@@ -33,6 +33,7 @@ export const OPPORTUNITIES: Opportunity[] = [
   {
     id: 'I-02975',
     customer: 'PIF',
+    serviceType: 'Landing Zone',
     dealValue: 58666.66,
     status: 'Closed-Loss',
     closeDate: '12/24/2025',
@@ -50,6 +51,7 @@ export const OPPORTUNITIES: Opportunity[] = [
   {
     id: 'I-03126',
     customer: 'IoT2',
+    serviceType: 'Cloud Foundation',
     dealValue: 0, 
     status: 'Active',
     closeDate: '11/30/2025',
@@ -67,6 +69,7 @@ export const OPPORTUNITIES: Opportunity[] = [
   {
     id: 'I-03125',
     customer: 'JEDCO',
+    serviceType: 'Professional Services',
     dealValue: 263920.00,
     status: 'Active',
     closeDate: '11/30/2025',
@@ -101,6 +104,7 @@ export const OPPORTUNITIES: Opportunity[] = [
   {
     id: 'I-02744',
     customer: 'Hevolution',
+    serviceType: 'Migration',
     dealValue: 71680.00,
     status: 'Active',
     closeDate: '2/1/2026',
@@ -126,6 +130,7 @@ export const OPPORTUNITIES: Opportunity[] = [
   {
     id: 'I-02878',
     customer: 'Kafaat',
+    serviceType: 'Cloud Foundation',
     dealValue: 112293.74,
     status: 'Active',
     closeDate: '12/30/2025',
@@ -151,6 +156,7 @@ export const OPPORTUNITIES: Opportunity[] = [
   {
     id: 'I-02967',
     customer: 'NWC (AI/ML)',
+    serviceType: 'AI/ML',
     dealValue: 600000.00,
     status: 'Active',
     closeDate: '12/31/2025',
@@ -168,6 +174,7 @@ export const OPPORTUNITIES: Opportunity[] = [
   {
     id: 'I-03027',
     customer: 'NWC (Smart Asst)',
+    serviceType: 'AI/ML',
     dealValue: 4100000.00,
     status: 'Active',
     closeDate: '12/31/2025',
@@ -203,6 +210,7 @@ export const OPPORTUNITIES: Opportunity[] = [
   {
     id: 'I-00352',
     customer: 'ADF',
+    serviceType: 'Landing Zone',
     dealValue: 1010833.00,
     status: 'Active',
     closeDate: '3/31/2026',
@@ -220,6 +228,7 @@ export const OPPORTUNITIES: Opportunity[] = [
   {
     id: 'I-03000',
     customer: 'MOJ',
+    serviceType: 'Professional Services',
     dealValue: 200000.00,
     status: 'Active',
     closeDate: 'Unknown',
@@ -237,6 +246,7 @@ export const OPPORTUNITIES: Opportunity[] = [
   {
     id: 'I-02495',
     customer: 'Kifah',
+    serviceType: 'Implementation',
     dealValue: 107351.25,
     status: 'Moved - Lost to partner',
     closeDate: 'Unknown',
@@ -254,6 +264,7 @@ export const OPPORTUNITIES: Opportunity[] = [
   {
     id: 'I-02857',
     customer: 'RIPC',
+    serviceType: 'Landing Zone',
     dealValue: 666332.46,
     status: 'Active',
     closeDate: '1/1/2026',
@@ -279,6 +290,7 @@ export const OPPORTUNITIES: Opportunity[] = [
   {
     id: 'N0hR7AAJ',
     customer: 'Aramco Stadium',
+    serviceType: 'Discovery',
     dealValue: 1.00,
     status: 'Active',
     closeDate: 'Unknown',

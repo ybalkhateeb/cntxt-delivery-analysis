@@ -3,7 +3,7 @@
 import React from 'react';
 import { Opportunity } from '../types';
 import { formatCurrency } from '../constants';
-import { AlertTriangle, CheckCircle, XCircle, Clock } from 'lucide-react';
+import { AlertTriangle, CheckCircle, XCircle, Clock, Tag } from 'lucide-react';
 
 interface OpportunityTableProps {
   data: Opportunity[];
@@ -24,6 +24,7 @@ const OpportunityTable: React.FC<OpportunityTableProps> = ({ data, onSelect }) =
           <thead className="text-xs text-gray-700 uppercase bg-gray-100 border-b border-gray-200">
             <tr>
               <th scope="col" className="px-6 py-3 font-semibold">Customer</th>
+              <th scope="col" className="px-6 py-3 font-semibold">Service Type</th>
               <th scope="col" className="px-6 py-3 font-semibold">Delivery Quote (USD/SAR)</th>
               <th scope="col" className="px-6 py-3 font-semibold">Delivery Effort</th>
               <th scope="col" className="px-6 py-3 font-semibold">Partner Quote (USD/SAR)</th>
@@ -46,6 +47,13 @@ const OpportunityTable: React.FC<OpportunityTableProps> = ({ data, onSelect }) =
                     </div>
                   </td>
                   
+                  <td className="px-6 py-4">
+                     <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                        <Tag size={10} />
+                        {item.serviceType}
+                     </span>
+                  </td>
+
                   {/* Delivery Stats */}
                   <td className="px-6 py-4 text-gray-900 font-bold whitespace-nowrap">
                     {formatCurrency(item.deliveryPrice, 'dual')}

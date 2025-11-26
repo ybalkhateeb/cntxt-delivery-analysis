@@ -36,6 +36,7 @@ export interface TableColumnDef {
 export interface Opportunity {
   id: string;
   customer: string;
+  serviceType: string; // New categorization field
   dealValue: number;
   status: string;
   closeDate: string;

@@ -1,3 +1,4 @@
+
 import React, { useMemo, useState } from 'react';
 import { OPPORTUNITIES, formatCurrency } from './constants';
 import { Opportunity } from './types';
@@ -11,19 +12,28 @@ import {
   AlertTriangle, 
   DollarSign, 
   Briefcase,
-  Table as TableIcon
+  Table as TableIcon,
+  Filter
 } from 'lucide-react';
 
 const App: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'high_priority'>('high_priority');
+  const [selectedService, setSelectedService] = useState<string>('All');
   const [selectedOpportunity, setSelectedOpportunity] = useState<Opportunity | null>(null);
 
+  // Extract unique service types
+  const serviceTypes = useMemo(() => {
+    const types = new Set(OPPORTUNITIES.map(o => o.serviceType));
+    return ['All', ...Array.from(types).sort()];
+  }, []);
+
   const filteredData = useMemo(() => {
-    if (filter === 'high_priority') {
-      return OPPORTUNITIES.filter(o => o.isHighPriority);
-    }
-    return OPPORTUNITIES;
-  }, [filter]);
+    return OPPORTUNITIES.filter(o => {
+        const matchesPriority = filter === 'all' || o.isHighPriority;
+        const matchesService = selectedService === 'All' || o.serviceType === selectedService;
+        return matchesPriority && matchesService;
+    });
+  }, [filter, selectedService]);
 
   // Calculations for Stats
   const totalDeliveryValue = filteredData.reduce((acc, curr) => acc + (curr.deliveryPrice || 0), 0);
@@ -50,6 +60,23 @@ const App: React.FC = () => {
           {/* Only show filters on dashboard view */}
           {!selectedOpportunity && (
             <div className="flex items-center gap-3">
+              <div className="flex items-center border border-gray-300 rounded-md bg-white overflow-hidden">
+                <div className="px-2 border-r border-gray-200 bg-gray-50 text-gray-500">
+                    <Filter size={14} />
+                </div>
+                <select 
+                    value={selectedService}
+                    onChange={(e) => setSelectedService(e.target.value)}
+                    className="text-sm border-none focus:ring-0 text-gray-700 py-1.5 pl-2 pr-8 bg-transparent"
+                >
+                    {serviceTypes.map(type => (
+                        <option key={type} value={type}>{type}</option>
+                    ))}
+                </select>
+              </div>
+
+              <div className="h-6 w-px bg-gray-200 mx-1"></div>
+
               <button 
                 onClick={() => setFilter('all')}
                 className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
