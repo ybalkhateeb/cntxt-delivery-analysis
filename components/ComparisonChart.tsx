@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import {
   BarChart,
@@ -31,8 +33,8 @@ const ComparisonChart: React.FC<ComparisonChartProps> = ({ data }) => {
   return (
     <div className="h-[400px] w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100">
       <div className="mb-4">
-        <h3 className="text-lg font-semibold text-gray-800">Delivery vs. Partner Pricing Gaps</h3>
-        <p className="text-sm text-gray-500">Excluding NWC (due to scale). Shows clear premium on Delivery services.</p>
+        <h3 className="text-lg font-semibold text-gray-800">Commercial Model Comparison</h3>
+        <p className="text-sm text-gray-500">Comparing commercial models across active opportunities (Excluding NWC).</p>
       </div>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
@@ -58,8 +60,8 @@ const ComparisonChart: React.FC<ComparisonChartProps> = ({ data }) => {
             contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
           />
           <Legend />
-          <Bar dataKey="Delivery Price" fill="#DB4437" radius={[4, 4, 0, 0]} name="Delivery Quote" />
-          <Bar dataKey="Partner Price" fill="#0F9D58" radius={[4, 4, 0, 0]} name="Partner Quote" />
+          <Bar dataKey="Delivery Price" fill="#4285F4" radius={[4, 4, 0, 0]} name="Delivery Estimate" />
+          <Bar dataKey="Partner Price" fill="#0F9D58" radius={[4, 4, 0, 0]} name="Partner Estimate" />
         </BarChart>
       </ResponsiveContainer>
     </div>

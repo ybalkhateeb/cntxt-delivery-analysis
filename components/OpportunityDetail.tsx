@@ -1,9 +1,11 @@
 
 
+
+
 import React from 'react';
 import { Opportunity, ResourceRow, TableColumnDef } from '../types';
 import { formatCurrency, formatNumber } from '../constants';
-import { ArrowLeft, Clock, DollarSign, Calendar, FileText, AlertTriangle, Building, Users } from 'lucide-react';
+import { ArrowLeft, Clock, DollarSign, Calendar, FileText, AlertTriangle, Building, Users, Info } from 'lucide-react';
 
 interface OpportunityDetailProps {
   opportunity: Opportunity;
@@ -86,7 +88,7 @@ const OpportunityDetail: React.FC<OpportunityDetailProps> = ({ opportunity, onBa
              <h1 className="text-3xl font-bold text-gray-900">{opportunity.customer}</h1>
              <span className={`px-4 py-1.5 rounded-full text-sm font-semibold border ${
                opportunity.status.includes('Lost') 
-               ? 'bg-red-50 text-red-700 border-red-200' 
+               ? 'bg-gray-50 text-gray-700 border-gray-200' 
                : 'bg-green-50 text-green-700 border-green-200'
              }`}>
                {opportunity.status}
@@ -106,8 +108,8 @@ const OpportunityDetail: React.FC<OpportunityDetailProps> = ({ opportunity, onBa
             </div>
             <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
               <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-3 flex items-center gap-2">
-                <AlertTriangle size={16} className="text-amber-600"/>
-                Pricing & Issue Notes
+                <Info size={16} className="text-blue-600"/>
+                Strategic Context
               </h3>
               <p className="text-gray-600 italic">
                 "{opportunity.notes}"
@@ -121,13 +123,13 @@ const OpportunityDetail: React.FC<OpportunityDetailProps> = ({ opportunity, onBa
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         
         {/* Delivery Card */}
-        <div className="bg-white rounded-xl border-l-4 border-l-red-500 border-y border-r border-gray-200 shadow-sm p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 relative">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-              <Building size={24} className="text-red-500" />
-              Delivery Proposal
+              <Building size={24} className="text-blue-600" />
+              Delivery Estimate
             </h2>
-            <span className="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded">INTERNAL</span>
+            <span className="bg-blue-50 text-blue-700 text-xs font-bold px-2 py-1 rounded">INTERNAL</span>
           </div>
           
           <div className="space-y-6">
@@ -147,19 +149,19 @@ const OpportunityDetail: React.FC<OpportunityDetailProps> = ({ opportunity, onBa
         </div>
 
         {/* Partner Card */}
-        <div className="bg-white rounded-xl border-l-4 border-l-green-500 border-y border-r border-gray-200 shadow-sm p-6 relative">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 relative">
           {variance && variance > 0 && (
-             <div className="absolute top-4 right-4 bg-red-100 text-red-800 text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
-               Delivery is {variance.toFixed(0)}% more expensive
+             <div className="absolute top-4 right-4 bg-gray-100 text-gray-700 text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
+               Variance: +{variance.toFixed(0)}%
              </div>
           )}
           
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-              <Building size={24} className="text-green-500" />
+              <Building size={24} className="text-green-600" />
               Partner Quote
             </h2>
-            <span className="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">
+            <span className="bg-green-50 text-green-700 text-xs font-bold px-2 py-1 rounded">
               {opportunity.partnerName || 'EXTERNAL'}
             </span>
           </div>

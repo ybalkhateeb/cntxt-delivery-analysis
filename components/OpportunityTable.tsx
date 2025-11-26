@@ -15,8 +15,8 @@ const OpportunityTable: React.FC<OpportunityTableProps> = ({ data, onSelect }) =
     <div className="bg-white shadow-sm rounded-xl border border-gray-200 overflow-hidden">
       <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center bg-gray-50">
         <h3 className="text-lg font-semibold text-gray-800">Opportunity Detail View</h3>
-        <span className="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
-          {data.filter(d => d.issue?.includes('High Pricing')).length} High Pricing Flags
+        <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+          {data.filter(d => d.issue?.includes('Variance') || d.issue?.includes('Pricing')).length} Variance Indicators
         </span>
       </div>
       <div className="overflow-x-auto">
@@ -33,12 +33,6 @@ const OpportunityTable: React.FC<OpportunityTableProps> = ({ data, onSelect }) =
           </thead>
           <tbody>
             {data.map((item) => {
-              const variance = (item.deliveryPrice && item.partnerPrice) 
-                ? ((item.deliveryPrice - item.partnerPrice) / item.partnerPrice) * 100 
-                : null;
-              
-              const isHighPricing = item.issue?.includes('High Pricing') || (variance && variance > 20);
-
               return (
                 <tr 
                   key={item.id} 
@@ -80,8 +74,8 @@ const OpportunityTable: React.FC<OpportunityTableProps> = ({ data, onSelect }) =
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
                        {item.status === 'Closed-Loss' || item.status.includes('Lost') ? (
-                         <span className="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full border border-red-200">
-                           <XCircle size={12} className="mr-1"/> Lost
+                         <span className="inline-flex items-center bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-0.5 rounded-full border border-gray-200">
+                           <XCircle size={12} className="mr-1"/> Closed
                          </span>
                        ) : (
                           <span className="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full border border-green-200">

@@ -1,4 +1,5 @@
 
+
 import React, { useMemo, useState } from 'react';
 import { OPPORTUNITIES, formatCurrency } from './constants';
 import { Opportunity } from './types';
@@ -29,7 +30,7 @@ const App: React.FC = () => {
   // Calculations for Stats
   const totalDeliveryValue = filteredData.reduce((acc, curr) => acc + (curr.deliveryPrice || 0), 0);
   const potentialLoss = filteredData
-    .filter(o => o.issue?.includes('High Pricing') || o.status.includes('Lost'))
+    .filter(o => o.issue?.includes('Variance') || o.status.includes('Lost'))
     .reduce((acc, curr) => acc + (curr.dealValue || 0), 0);
 
   const priceVarianceCount = filteredData.filter(o => 
@@ -45,7 +46,7 @@ const App: React.FC = () => {
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
               <TrendingUp className="text-white" size={20} />
             </div>
-            <h1 className="text-xl font-bold text-gray-900 tracking-tight">Presales Analysis <span className="text-gray-400 font-normal">| Delivery vs Market</span></h1>
+            <h1 className="text-xl font-bold text-gray-900 tracking-tight">Presales Analysis <span className="text-gray-400 font-normal">| Delivery & Market Alignment</span></h1>
           </div>
           
           {/* Only show filters on dashboard view */}
@@ -65,11 +66,11 @@ const App: React.FC = () => {
                 onClick={() => setFilter('high_priority')}
                 className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
                   filter === 'high_priority' 
-                  ? 'bg-red-600 text-white shadow-sm' 
+                  ? 'bg-blue-600 text-white shadow-sm' 
                   : 'text-gray-600 hover:bg-gray-100'
                 }`}
               >
-                Priority Flags
+                Key Focus Areas
               </button>
             </div>
           )}
@@ -89,8 +90,8 @@ const App: React.FC = () => {
             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
               <h2 className="text-lg font-semibold text-gray-900 mb-2">Executive Summary</h2>
               <p className="text-gray-600 leading-relaxed">
-                This dashboard highlights critical discrepancies between Internal Delivery pricing/effort estimates and Partner benchmarks. 
-                High pricing is currently jeopardizing sales outcomes for key accounts including <span className="font-semibold text-gray-900">NWC, PIF, and ADF</span>.
+                This dashboard analyzes the commercial alignment between Internal Delivery estimates and Market benchmarks. 
+                The goal is to identify areas for optimization to improve competitiveness for key accounts including <span className="font-semibold text-gray-900">NWC, PIF, and ADF</span>.
               </p>
             </div>
 
@@ -104,23 +105,23 @@ const App: React.FC = () => {
               <StatsCard 
                 title="Avg Price Variance" 
                 value="+185%" 
-                subValue="Delivery vs Partner"
-                trend="up"
-                trendValue="Critical"
+                subValue="Delivery vs Benchmark"
+                trend="neutral"
+                trendValue="Review Needed"
                 icon={<TrendingUp size={24} />}
               />
               <StatsCard 
-                title="High Variance Deals" 
+                title="Deals for Review" 
                 value={priceVarianceCount.toString()} 
-                subValue="> 50% Markup"
-                trend="up"
-                trendValue="Needs Review"
+                subValue="Significant Delta"
+                trend="neutral"
+                trendValue="Optimization Opportunity"
                 icon={<AlertTriangle size={24} />}
               />
               <StatsCard 
-                title="Deal Value At Risk" 
+                title="Pipeline for Optimization" 
                 value={formatCurrency(potentialLoss)} 
-                subValue="Due to Pricing"
+                subValue="Active Deals"
                 icon={<DollarSign size={24} />}
               />
             </div>
