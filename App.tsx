@@ -1,5 +1,3 @@
-
-
 import React, { useMemo, useState } from 'react';
 import { OPPORTUNITIES, formatCurrency } from './constants';
 import { Opportunity } from './types';
@@ -90,8 +88,7 @@ const App: React.FC = () => {
             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
               <h2 className="text-lg font-semibold text-gray-900 mb-2">Executive Summary</h2>
               <p className="text-gray-600 leading-relaxed">
-                This dashboard analyzes the commercial alignment between Internal Delivery estimates and Market benchmarks. 
-                The goal is to identify areas for optimization to improve competitiveness for key accounts including <span className="font-semibold text-gray-900">NWC, PIF, and ADF</span>.
+                This dashboard analyzes the commercial alignment between Internal Delivery estimates and Market benchmarks.
               </p>
             </div>
 
